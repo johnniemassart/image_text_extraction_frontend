@@ -1,0 +1,11 @@
+.home-wrapper {
+  height: 100svh;
+  background-color: black;
+  color: white;
+}
+
+.home-image-input-wrapper {
+  border: 1px solid green;
+  width: 400px;
+  height: 400px;
+}
