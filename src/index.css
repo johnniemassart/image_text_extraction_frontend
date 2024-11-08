@@ -4,3 +4,7 @@
   margin: 0;
   text-decoration: none;
 }
+
+:root {
+  background-color: rgb(30, 30, 30);
+}
