@@ -7,19 +7,10 @@ import HomeImagePreview from "./HomeImagePreview";
 const HomeImageInput = () => {
   const [title, setTitle] = useState("");
   const [images, setImages] = useState([]);
-  const [preview, setPreview] = useState([]);
   const predictionUrl = "http://127.0.0.1:8000/predictions/";
   const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
-    // set images for upload to cloudinary
-    const files = Array.from(acceptedFiles);
-    setImages(files);
     acceptedFiles.forEach((file) => {
-      // set images for preview
-      const reader = new FileReader();
-      reader.onload = () => {
-        setPreview((prev) => [...prev, reader.result]);
-      };
-      reader.readAsDataURL(file);
+      setImages((prev) => [...prev, file]);
     });
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -27,10 +18,9 @@ const HomeImageInput = () => {
     accept: "image/*",
   });
   const handleRemoveImage = (image) => {
-    setPreview((prev) => prev.filter((item) => item !== image));
+    setImages((prev) => prev.filter((item) => item !== image));
   };
   const handleSubmit = async () => {
-    console.log("uploading files");
     const formData = new FormData();
     formData.append("title", title);
     for (let i = 0; i < images.length; i++) {
@@ -41,6 +31,9 @@ const HomeImageInput = () => {
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err.message));
   };
+  useEffect(() => {
+    console.log("images", images);
+  }, [images]);
   return (
     <div className="home-image-input-wrapper">
       <HomeTitle title={title} setTitle={setTitle} />
@@ -54,7 +47,7 @@ const HomeImageInput = () => {
       </div>
       {images.length > 0 && (
         <HomeImagePreview
-          preview={preview}
+          images={images}
           handleRemoveImage={handleRemoveImage}
           handleSubmit={handleSubmit}
         />
