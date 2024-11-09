@@ -4,7 +4,7 @@ import axios from "axios";
 import HomeTitle from "./HomeTitle";
 import HomeImagePreview from "./HomeImagePreview";
 
-const HomeImageInput = () => {
+const HomeImageInput = ({ isSubmitted, setIsSubmitted }) => {
   const [title, setTitle] = useState("");
   const [images, setImages] = useState([]);
   const predictionUrl = "http://127.0.0.1:8000/predictions/";
@@ -28,12 +28,14 @@ const HomeImageInput = () => {
     }
     await axios
       .post(predictionUrl, formData)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        console.log(res.data);
+        setTitle("");
+        setImages([]);
+        setIsSubmitted(true);
+      })
       .catch((err) => console.log(err.message));
   };
-  useEffect(() => {
-    console.log("images", images);
-  }, [images]);
   return (
     <div className="home-image-input-wrapper">
       <HomeTitle title={title} setTitle={setTitle} />

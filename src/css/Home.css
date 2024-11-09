@@ -4,6 +4,8 @@
   color: white;
 }
 
+/* HOME IMAGE INPUT */
+
 .home-image-input-wrapper {
   height: 100%;
   /* border: 1px solid orange; */
@@ -123,5 +125,28 @@
 .submit-btn:hover {
   background-color: rgb(150, 150, 150);
   color: black;
+  cursor: pointer;
+}
+
+/* HOME IMAGE RESULTS */
+.home-image-results-wrapper {
+  height: 100%;
+  border: 1px solid yellow;
+  position: relative;
+}
+
+.return-btn {
+  border: none;
+  background-color: transparent;
+  color: white;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 6px 10px;
+  font-size: 28px;
+}
+
+.return-btn:hover {
+  background-color: black;
   cursor: pointer;
 }
