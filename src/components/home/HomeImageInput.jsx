@@ -4,10 +4,15 @@ import axios from "axios";
 import HomeTitle from "./HomeTitle";
 import HomeImagePreview from "./HomeImagePreview";
 
-const HomeImageInput = ({ isSubmitted, setIsSubmitted }) => {
+const HomeImageInput = ({
+  isSubmitted,
+  setIsSubmitted,
+  message,
+  setMessage,
+}) => {
   const [title, setTitle] = useState("");
   const [images, setImages] = useState([]);
-  const predictionUrl = "http://127.0.0.1:8000/predictions/";
+  const predictionUrl = "http://127.0.0.1:8000/api/upload/";
   const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
     acceptedFiles.forEach((file) => {
       setImages((prev) => [...prev, file]);
@@ -29,7 +34,7 @@ const HomeImageInput = ({ isSubmitted, setIsSubmitted }) => {
     await axios
       .post(predictionUrl, formData)
       .then((res) => {
-        console.log(res.data);
+        setMessage(res.data.message);
         setTitle("");
         setImages([]);
         setIsSubmitted(true);

@@ -5,17 +5,22 @@ import HomeImageResults from "../components/home/HomeImageResults";
 
 const Home = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [message, setMessage] = useState(null);
   return (
     <div className="home-wrapper">
       {isSubmitted === false ? (
         <HomeImageInput
           isSubmitted={isSubmitted}
           setIsSubmitted={setIsSubmitted}
+          message={message}
+          setMessage={setMessage}
         />
       ) : (
         <HomeImageResults
           isSubmitted={isSubmitted}
           setIsSubmitted={setIsSubmitted}
+          message={message}
+          setMessage={setMessage}
         />
       )}
     </div>
