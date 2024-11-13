@@ -25,9 +25,10 @@
   border: none;
   border-radius: 8px;
   color: white;
-  height: 35px;
+  height: 40px;
   width: 250px;
   text-align: center;
+  font-size: 16px;
 }
 
 .home-image-title-input:focus {
@@ -42,10 +43,14 @@
   /* border: 1px solid green; */
   border-radius: 8px;
   background-color: rgb(50, 50, 50);
-  width: 80%;
+  width: clamp(100px, 80%, 780px);
   height: 225px;
   position: relative;
   margin-bottom: 10px;
+}
+
+.home-image-dropzone:hover {
+  border: 1.5px solid #002d72;
 }
 
 .dropzone-header {
@@ -57,7 +62,7 @@
   font-size: 24px;
   white-space: nowrap;
   color: rgb(120, 120, 120);
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .preview-wrapper {
@@ -131,8 +136,21 @@
 /* HOME IMAGE RESULTS */
 .home-image-results-wrapper {
   height: 100%;
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-header {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  background-color: rgb(220, 220, 220);
+  color: black;
 }
 
 .return-btn {
@@ -140,7 +158,7 @@
   background-color: transparent;
   color: white;
   position: absolute;
-  top: 20px;
+  top: 40px;
   left: 20px;
   padding: 6px 10px;
   font-size: 28px;
@@ -149,4 +167,17 @@
 .return-btn:hover {
   background-color: black;
   cursor: pointer;
+}
+
+.message-ind-result-wrapper {
+  /* border: 1px solid red; */
+  width: clamp(100px, 80%, 780px);
+  background-color: rgb(220, 220, 220);
+}
+
+.message-ind-result {
+  color: black;
+  margin: 12px;
+  line-height: 1.25;
+  font-size: 18px;
 }

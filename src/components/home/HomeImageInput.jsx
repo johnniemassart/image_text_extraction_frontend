@@ -44,12 +44,17 @@ const HomeImageInput = ({
   return (
     <div className="home-image-input-wrapper">
       <HomeTitle title={title} setTitle={setTitle} />
-      <div {...getRootProps({ className: "home-image-dropzone" })}>
+      <div
+        {...getRootProps({
+          className: "home-image-dropzone",
+          style: { border: isDragActive && "1.5px solid #002d72" },
+        })}
+      >
         <input {...getInputProps()} />
         {isDragActive ? (
-          <h1 className="dropzone-header">Drag Active</h1>
+          <h1 className="dropzone-header">drop file</h1>
         ) : (
-          <h1 className="dropzone-header">Drop your files here</h1>
+          <h1 className="dropzone-header">drop your files here</h1>
         )}
       </div>
       {images.length > 0 && (
